@@ -1,34 +1,29 @@
-import { useEffect, useState } from 'react'; // Importamos useEffect y useState
-import { getUsuarios } from '../services/UserService';
+import { useEffect, useState } from "react";
+import { getMarcasCarros } from '../services/UserService';
 
+export function ComponentePractica() {
+    const [marca, setMarca] = useState(null);
 
+    useEffect(() => {
+        async function MarcadeCarros() {
+            const carrosMarcas = await getMarcasCarros();
+            const primeraMarca = carrosMarcas.find((x) => x.id === 1);
+            setMarca(primeraMarca);
+        }
+        MarcadeCarros();
+    }, []);
 
-// Componente principal de la página
-export default function Usuarios() {
-    // Creamos un estado llamado "usuarios" para guardar la lista de usuarios
-    const [usuarios, setUsuarios] = useState([]);
-
-// useEffect se ejecuta una vez cuando el componente se monta
-useEffect(() => {
-    async function fetchData() {
-      // Llamamos a getUsuarios para obtener los datos de la API
-      const data = await getUsuarios();
-      // Guardamos los datos obtenidos en el estado
-      setUsuarios(data);
-    }
-    fetchData();
-  }, []); // El array vacío significa que esto solo corre una vez al montarse
- // Renderizamos la interfaz
- return (
-    <div>
-      <h1>Lista de Usuarios</h1>
-      <ul>
-        {usuarios.map((usuario) => (
-          <li key={usuario.id}>
-            {usuario.nombre} - {usuario.edad} años
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    const numeros = [1, 2, 3, 4, 5];
+    const primerNumero=numeros.filter((numero) => numero > 3)
+    console.log(primerNumero);
+    return (
+        <div>
+            <h1>Marca de Carro con ID 1</h1>
+            <ul>
+                <li>
+                    {marca?.nombre} - {marca?.pais}
+                </li>
+            </ul>
+        </div>
+    );
 }

@@ -1,11 +1,13 @@
 'use client'
 import React from 'react'
-import Usuarios from '../../components/componente'
+import Usuarios, { ComponentePractica } from '../../components/componente'
+import ListaPersonasComponent from '../../components/personas'
+import ListaProductos from '../../components/personas'
 
 function page() {
   return (
     <div>
-        <Usuarios/>
+        <ComponentePractica/>
     </div>
   )
 }

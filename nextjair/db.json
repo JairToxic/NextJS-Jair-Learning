@@ -1,8 +1,54 @@
 {
-    "usuarios": [
-      { "id": 1, "nombre": "Juan", "edad": 25 },
-      { "id": 2, "nombre": "Ana", "edad": 30 },
-      { "id": 3, "nombre": "Luis", "edad": 28 }
-    ]
-  }
-  
+  "marcas": [
+    {
+      "id": 1,
+      "nombre": "Toyota",
+      "pais": "Japón"
+    },
+    {
+      "id": 2,
+      "nombre": "Ford",
+      "pais": "Estados Unidos"
+    },
+    {
+      "id": 3,
+      "nombre": "Volkswagen",
+      "pais": "Alemania"
+    },
+    {
+      "id": 4,
+      "nombre": "Hyundai",
+      "pais": "Corea del Sur"
+    },
+    {
+      "id": 5,
+      "nombre": "Chevrolet",
+      "pais": "Estados Unidos"
+    },
+    {
+      "id": 6,
+      "nombre": "Honda",
+      "pais": "Japón"
+    },
+    {
+      "id": 7,
+      "nombre": "BMW",
+      "pais": "Alemania"
+    },
+    {
+      "id": 8,
+      "nombre": "Nissan",
+      "pais": "Japón"
+    },
+    {
+      "id": 9,
+      "nombre": "Peugeot",
+      "pais": "Francia"
+    },
+    {
+      "id": 10,
+      "nombre": "Fiat",
+      "pais": "Italia"
+    }
+  ]
+}
