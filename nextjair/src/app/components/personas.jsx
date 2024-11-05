@@ -1,61 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { getPersonas, getProductos } from '../services/UserService';
+import { useState } from "react";
+import { addColor } from '../services/UserService';
 
+export function ComponentePractica1() {
+    const [nombre, setNombre] = useState('');
+    const [hex, setHex] = useState('');
+    const [rgb, setRgb] = useState('');
 
-
-function ListaProductos() {
-  // Estado para guardar la lista de personas
-  const [prodcutos,setProductos] = useState([]);
-  const [personas, setPersonas] = useState([]);
-
-  // Llamada al servicio para obtener los datos de las personas
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getPersonas();
-      setPersonas(data);
+    async function handleSubmit(event) {
+        event.preventDefault(); // Previene que la página se recargue
+        const nuevoColor = { nombre, hex, rgb }; // Crea el objeto color con los valores
+        await addColor(nuevoColor); // Llama al servicio para enviar el color
     }
-    fetchData();
-  }, []);
 
-
-  useEffect(() => {
-    async function fetchData1() {
-        const jair = await getProductos();
-        setProductos(jair)
-        
-    }fetchData1();
-    },  []);
-  
-
-  
-
-  // Renderizamos la interfaz
-  return (
-    <div>
-      <h1>Lista de Productos</h1>
-      <ul>
-        {prodcutos.map((prodcutos) => (
-          <li key={prodcutos.id}>
-            <p><strong>Nombre:</strong> {prodcutos.nombre}</p>
-            <p><strong>precio:</strong> {prodcutos.precio}</p>
-            <p><strong>categoria:</strong> {prodcutos.categoria}</p>
-            <hr />
-          </li>
-        ))}
-      </ul>
-
-      <ul>
-        {prodcutos.map((prodcutos) => (
-          <li key={prodcutos.id}>
-            <p><strong>Nombre:</strong> {prodcutos.nombre}</p>
-            <p><strong>precio:</strong> {prodcutos.precio}</p>
-            <p><strong>categoria:</strong> {prodcutos.categoria}</p>
-            <hr />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Nombre:
+                <input
+                    type="text"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                />
+            </label>
+            <br />
+            <label>
+                Hex:
+                <input
+                    type="text"
+                    value={hex}
+                    onChange={(e) => setHex(e.target.value)}
+                />
+            </label>
+            <br />
+            <label>
+                RGB:
+                <input
+                    type="text"
+                    value={rgb}
+                    onChange={(e) => setRgb(e.target.value)}
+                />
+            </label>
+            <br />
+            <button type="submit">Enviar Color</button>
+        </form>
+    );
 }
-
-export default ListaProductos;

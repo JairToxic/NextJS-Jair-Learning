@@ -1,35 +1,32 @@
 import { useEffect, useState } from "react";
-import { getMarcasCarros } from '../services/UserService';
+import { getColores } from '../services/UserService';
 
-
-export function ComponentePractica() {
-
-    const  [marcas,setMarcas] = useState([])
+export function ComponentePractica1() {
+    const [colores, setColores] = useState([]);
 
     useEffect(() => {
-      async function MarcadeCarros() {
-        const carrosMarcas =await getMarcasCarros();
-        setMarcas(carrosMarcas);
-      } MarcadeCarros();
-  
-    }, [])
-    
-return(
-<div>
-<h1>Lista de Marcas de carros</h1>
-<ul>
-    <li>
-        {marcas.nombre}
-    </li>
-</ul>
+        async function ColoresEstilos() {
+            // Asegúrate de llamar a la función con paréntesis para ejecutar `getColores`
+            const EsCol = await getColores();
+            setColores(EsCol);
+        }
+        
+        ColoresEstilos();
+    }, []);
 
-
-
-</div>
-
-)
-
-
-
-    
+    return (
+        <div>
+            <h1>Lista de Colores</h1>
+            <ul>
+                {colores.map((color) => (
+                    <li key={color.id}>
+                        <p><strong>Nombre:</strong> {color.nombre}</p>
+                        <p><strong>Hex:</strong> {color.hex}</p>
+                        <p><strong>RGB:</strong> {color.rgb}</p>
+                        <hr />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }

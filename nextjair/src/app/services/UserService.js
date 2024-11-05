@@ -24,3 +24,23 @@ export async function getMarcasCarros() {
     const RData=  await carros.json();
     return RData;
 }
+export async function getColores() {
+    const colores = await fetch('http://localhost:3001/colores');
+    const ResColores = await colores.json();
+    return ResColores;
+}
+
+// UserService.js
+
+export async function addColor(nuevoColor) {
+    const response = await fetch('http://localhost:3001/colores', {
+        method: 'POST', // Especifica el método como POST
+        headers: {
+            'Content-Type': 'application/json', // Define que enviarás JSON
+        },
+        body: JSON.stringify(nuevoColor), // Convierte el objeto a JSON
+    });
+
+    const result = await response.json();
+    return result; // Retorna la respuesta del servidor (podría ser el color recién creado)
+}
